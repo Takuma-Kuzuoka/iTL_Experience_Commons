@@ -1,0 +1,202 @@
+
+<div class="user_show">
+<br>
+<div class="user_content">
+
+ <div class="user_image">
+    <% if @user.image? %>  
+        <%= image_tag @user.image_url, size: "20x20" %>
+    <% else %>  
+        <%= image_tag  'default.png', size: "20x20" %>
+    <% end %>
+ </div>
+
+ <div class="user_attribute">
+ <% if current_user.id == @user.id %>
+ <% else %>
+ <%= render "relationships/follow_button", user: @user  %>
+ <% end %>
+ <br>
+ <table>
+  <tr>
+    <td>名前 :</td>
+    <td><%= @user.name %></td>
+  </tr>
+  <tr>
+    <td>興味ある進路 :</td>
+    <td><%= @user.course %></td>
+  </tr>
+  <tr>
+    <td>研究室 :</td>
+    <td><%= @user.labo %></td>
+  </tr>
+</table>
+
+ 
+  <div class="show-list">
+    <% if current_user.id == @user.id %>
+     <%= link_to "編集する", edit_user_registration_path %>
+    <% else %>
+ 
+   
+
+    <% if @isRoom == true %>
+      <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
+      <% else %>
+     <%= form_for @room do |f| %>
+      <%= fields_for @entry do |e| %>
+        <%= e.hidden_field :user_id, :value=> @user.id %>
+      <% end %>
+        <%= f.submit "チャットを始める" %>
+      <% end %>
+     <% end %>
+    <% end %>
+  </div>
+ </div>
+</div>
+
+
+
+
+<!--ページ内タブ-->
+<div class="cp_tab">
+
+<input type="radio" name="cp_tab" id="tab1_3" aria-controls="third_tab01" checked>
+<label for="tab1_3"><%= @user.name %>のプロフィール</label>
+<input type="radio" name="cp_tab" id="tab1_1" aria-controls="first_tab01" >
+<label for="tab1_1"><%= @user.name %>の質問</label>
+<input type="radio" name="cp_tab" id="tab1_2" aria-controls="second_tab01">
+<label for="tab1_2"><%= @user.name %>のフォロワー</label>
+
+	<div class="cp_tabpanels">
+    <div id="third_tab01" class="cp_tabpanel">
+      <div class="tab01-profile">
+       <div class="profile-text">
+       <% if @user.profile %>
+         <%= @user.profile %>
+       <% else %>
+         <p>ユーザーのプロフィールが設定されていません。</p>     
+       <% end %> 
+       </div>
+      </div> 
+		</div>
+
+<div id="first_tab01" class="cp_tabpanel">
+  <div class="user-questions-index">
+    <% @questions.each do |t| %>
+       <div class="user-questions-card">
+         <%= link_to question_path(t.id) do %>
+           <div class="user-questions-container">
+             <div class="user-question">
+              <!--ユーザーの名前とトプ画ここから-->
+               <div class="user-questioner">
+                   <div class="user-questioner-image">
+                      <% if t.user.image? %>  
+                      <%= image_tag t.user.image_url, size: "40x40" %>
+                      <% else %>  
+                      <%= image_tag  'default.png', size: "40x40" %>
+                     <% end %>
+                   </div>
+                   <div class="user-questioner-name">
+                     <object><a href="/users/<%= t.user.id %>"><%= t.user.name %></a></object>
+                   </div>
+                </div>
+                      <!--ユーザーの名前とトプ画ここまで-->
+                   <div class="user-question-title">
+                     <%= t.title.truncate(40) %>
+                   </div>
+                   <div class="user-count">
+                     <div class="user-comment-count">
+                       コメント<%= t.comments.count %>件<br>
+                     </div>
+                     &nbsp;
+                     <div class="user-liked-count">
+                       いいね<%= t.comments.count %>件
+                     </div>
+                   </div>
+              </div>
+           </div>
+         <% end %>
+       </div>
+     <% end %>
+     <div class="bootstrap"><%= paginate @questions %></div>
+  </div>  
+</div>
+  
+		<div id="second_tab01" class="cp_tabpanel">
+    <% @user.followings.each do |t| %>    
+        <div class="users-card">
+          <%= link_to user_path(t.id) do %>
+            <div class="users-container">
+              <div class="user-question">
+               <!--ユーザーの名前とトプ画ここから-->
+                <div class="user-questioner">
+                    <div class="user-questioner-image">
+                       <% if t.image? %>  
+                       <%= image_tag t.image_url, size: "40x40" %>
+                       <% else %>  
+                       <%= image_tag  'default.png', size: "40x40" %>
+                      <% end %>
+                    </div>
+                    <div class="user-questioner-name">
+                      <object><a href="/users/<%= t.id %>"><%= t.name %></a></object>
+                    </div>
+                    
+                    
+                    <div class="user-follow">
+                    <%= render "relationships/follow_button", user: t  %>
+                    </div> 
+                    
+                  
+                 </div>
+                       <!--ユーザーの名前とトプ画ここまで-->
+                    <div class="user-question-title">
+                     <div id="smaller">
+                      <%= t.labo %>
+                      <%= t.course %><br>
+                     </div> 
+                      <% if t.profile %>
+                      <%= t.profile.truncate(40)%>
+                      <% end %>
+                    </div>
+                    <div class="user-count">
+                      <div class="user-comment-count">
+                        フォロー<%= t.followings.count %>人<br>
+                      </div>
+                      &nbsp;
+                      <div class="liked-count">
+                        フォロワー<%= t.followers.count %>人
+                      </div>
+                    </div>
+               </div>
+            </div>
+          <% end %>
+        </div>
+     <% end %>
+		</div>
+
+	</div>
+</div>
+
+
+
+
+
+
+<!--チャット機能-->
+<% if @user.id == current_user.id %>
+<% else %>
+  <% if @isRoom == true %>
+    <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
+  <% else %>
+    <%= form_for @room do |f| %>
+      <%= fields_for @entry do |e| %>
+        <%= e.hidden_field :user_id, :value=> @user.id %>
+      <% end %>
+      <%= f.submit "チャットを始める" %>
+    <% end %>
+  <% end %>
+<% end %>
+
+
+</div>

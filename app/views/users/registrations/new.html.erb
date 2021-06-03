@@ -1,0 +1,57 @@
+<div class="new-body">
+<div class="form-wrapper">
+
+<h2>新規登録</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "users/shared/error_messages", resource: resource %>
+  
+  <div class="field">
+    <%= f.label :memberId,"学籍番号" %><br />
+    <%= f.text_field :memberId, autofocus: true, autocomplete: "memberId" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :email,"メールアドレス" %><br />
+    <%= f.text_field :email, autofocus: true, autocomplete: "memberId" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "new-password", placeholder: "半角英数6文字以上"  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "再度入力してください"  %>
+  </div>
+
+  <div class="selectbox">
+    <%= f.label :course, "希望の進路" %><br />
+    <%= f.select :course, [["IT系", "IT系"], ["法律系", "法律系"],["外資・海外","外資・海外"]], include_blank: "選択して下さい" , class: 'form-control' , required: true %><br>
+    <%= f.label :labo, "ゼミ" %><br />
+    <%= f.select :labo, [["岡嶋ゼミ", "岡嶋ゼミ"], ["飯尾ゼミ", "飯尾ゼミ"],["須藤ゼミ","須藤ゼミ"],["未所属","未所属"]], include_blank: "選択して下さい" ,  class: 'form-control' , required: true %>
+  </div>
+
+
+
+  <div class="image_input_btn">
+    <%= f.label :image, "プロフィール画像" %>
+  </div>
+    <%= f.file_field :image , class: "image_form"%>
+  
+
+  
+  <div class="button-panel">
+    <%= f.submit "アカウントを作る" , class:"button"%>
+  </div>
+<% end %>
+
+
+</div>
+</div>

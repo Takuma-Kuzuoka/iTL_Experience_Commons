@@ -1,0 +1,307 @@
+// Place all the styles related to the questions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+$tl: 0.6s; // transition length
+
+
+.questions-index{
+  display: flex;
+  justify-content: space-around;
+}
+
+.left{
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  
+}
+.left-search{
+  margin-top: 120px;
+  padding-top: 30px;
+  padding-left: 30px;  
+  padding-bottom: 30px;
+  position: relative;
+  border: solid 3px black;
+  border-radius: 8px;
+}
+
+.left-search .box-title {
+  position: absolute;
+  display: inline-block;
+  top: -27px;
+  left: 1px;
+  padding: 0 9px;
+  height: 25px;
+  line-height: 25px;
+  font-size: 17px;
+  background: black;
+  color: white;
+  border-radius: 5px 5px 0 0;
+  font-family: serif;
+}
+.left-search p {
+  margin: 0; 
+  padding: 0;
+}
+
+.create-question{
+  margin-top: 100px;
+  padding-top: 20px;
+  padding-left: 30px;  
+  padding-bottom: 30px;
+  position: relative;
+  border: solid 3px black;
+  border-radius: 8px;
+}
+
+.create-question .box-title {
+  position: absolute;
+  display: inline-block;
+  top: -27px;
+  left: 1px;
+  padding: 0 9px;
+  height: 25px;
+  line-height: 25px;
+  font-size: 17px;
+  background: black;
+  color: white;
+  border-radius: 5px 5px 0 0;
+  font-family: serif;
+}
+.create-question p {
+  margin: 0; 
+  padding: 0;
+}
+
+
+
+.right{
+  margin-right: 40px;
+  width: 40%;
+}
+
+.search-box {
+  transition: width $tl, border-radius $tl, background $tl, box-shadow $tl;
+  width: 50px;height: 50px;
+  border-radius: 20px;border: none;
+  cursor: pointer;
+  background: rgb(235, 235, 235);
+  & + label .search-icon {    color: black    }
+  &:hover {
+    color: white;
+    background: rgb(200, 200, 200);
+    box-shadow: 0 0 0 5px rgb(61, 71, 82);
+    & + label .search-icon {    color: white    }
+  }
+  &:focus {
+    transition: width $tl cubic-bezier(0,1.22,.66,1.39), border-radius $tl, background $tl;
+    border: none;outline: none;
+    box-shadow: none;
+    padding-left: 15px;
+    cursor: text;
+    width: 240px;
+    border-radius: auto;
+    background: rgb(235, 235, 235);
+    color: black;
+    & + label .search-icon {    color: black;    }
+  }
+  &:not(:focus) {    text-indent:-5000px;    } // for more-graceful falling back (:not browsers likely support indent)
+}
+
+#search-submit {
+  position: relative;left: -5000px;
+}
+
+.search-icon {
+  position: relative;
+  left: -30px;
+  color: white;
+  cursor: pointer;
+}
+
+
+
+.questions-card{
+  width: 100%;
+
+}
+
+
+
+.questions-card a{
+  text-decoration: none;
+  color: #5d627b;
+  cursor: pointer;
+  transition-duration: 0.5s;
+}
+
+.questions-container {
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  color: #5d627b;
+  background: white;
+  border-top: solid 5px #1F2125;
+  border-bottom:solid 2px darkred;
+  box-shadow: 0 3px 5px rgba(0,0,0,0.22);
+}
+
+
+
+.questions-index .questions-card:hover{
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+  transform: translateY(-10px);
+  transition-duration: 0.5s;
+}
+
+
+
+.questioner {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+
+.count {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  
+}
+
+.question-title {
+  font-size: larger;
+  color: black;
+}
+
+.questioner-name object a{ 
+  color:#5d627b;
+  transition: color 0.5s;
+}
+
+.questioner-name object a:hover{ 
+   color:darkred
+}
+
+.questioner-name object a:active{ 
+  color:red
+}
+
+.questions-index p {
+  color: #888;
+}
+
+//ここから新規質問
+.container {
+  font-family: "Yu Gothic", YuGothic, Verdana, 'Hiragino Kaku Gothic ProN','Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo, sans-serif;
+ 
+
+ }
+
+.btn-box {
+  display: inline-block;
+  width: 200px;
+  text-align: center;
+  font-size: 16px;
+  color: darkred;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 12px 24px;
+  position: relative;
+  border: 2px solid darkred;
+  transition: .4s;
+}
+
+.btn-box:hover {
+  border: 2px solid transparent;
+  color: red;
+}
+
+.btn-box:before, .btn-box:after {
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  transform: scale(0);
+  transition: .2s;
+}
+
+.btn-box:before {
+  border-bottom: 2px solid red;
+  border-left: 2px solid red;
+  transform-origin: 100% 0%;
+}
+
+.btn-box:after {
+  border-top: 2px solid red;
+  border-right: 2px solid red;
+  transform-origin: 0% 100%;
+}
+
+.btn-box:hover:after,
+.btn-box:hover:before {
+  transform: scale(1);
+}
+
+.questions-time{
+  margin-left: 50px;
+}
+
+
+
+//ここから質問詳細ページ
+#question-show-title{
+  padding: 0.5em 1em;
+  margin: 30px auto;
+  color: #5d627b;
+  background: white;
+  border-top: solid 5px darkred;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+  display: flex;
+  flex-direction: column;
+
+  width: 70%;
+  word-wrap:break-word;
+}
+#question-show-title p {
+  margin: 0; 
+}
+
+.ptitle{
+  font-size: larger;
+  font-weight: bold;
+  width: 100%;
+  
+}
+
+.pquestioner-name{
+  padding-left: 750px;
+}
+
+#question-show-content{
+  padding: 0.5em 1em;
+  margin: auto;
+  color: #5d627b;
+  background: white;
+  border-top: solid 5px darkred;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  word-wrap:break-word;
+}
+
+.pcontent{
+  width: 100%;
+}
+.ptime{
+  position:relative;
+  right: 10px;
+  bottom: 0;
+  margin-left: 650px;
+}

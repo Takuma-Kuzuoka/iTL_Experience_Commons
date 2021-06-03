@@ -1,0 +1,13 @@
+<%= form_for @question  do |f| %>
+　
+    <div class="field">
+        <%= f.label:title  %>
+        <%= f.text_field :title, :size => 52 %>
+        
+        <div class="field">
+        <%= f.label :content %>
+        <%= f.text_area :content, :size => "50x10"  %>
+        </div>
+        <%= f.submit "質問する" %>
+     </div>     
+<% end %>

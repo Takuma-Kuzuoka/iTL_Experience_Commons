@@ -1,0 +1,58 @@
+
+
+<div id="question-show-title">
+  <p class="ptitle"><%= @question.title %></p>
+  <p class="pquestioner-name"><%= @question.user.name %></p>
+</div>
+
+<div id="question-show-content">
+  <p class="pcontent"><%= @question.content %></p>
+  <p class="ptime"><%= @question.created_at.to_s(:datetime_jp) %></p>
+</div>
+
+
+<div class="comment-wrapper">
+  <p>コメント一覧</p>
+  <% @comments.each do |c| %>
+    <div>
+      <%= c.user.name unless c.user.blank? %>
+      <br>
+      <%= c.content %>
+    </div>
+      <br>
+  <% end %>
+   
+
+  <% if user_signed_in? %>
+
+  <% if current_user.already_liked?(@question) %>
+      <%= link_to question_like_path(@question), method: :delete do %>
+         <p>いいねを取り消す</p><%= @question.likes.count %>
+      <% end %>
+  <% else %>
+      <%= link_to question_likes_path(@question), method: :post do %>
+         <p>いいね</p><%= @question.likes.count %>
+      <% end %>
+  <% end %>
+  <% else %>
+    <p>いいねの数 = </p><%= @question.likes.count %>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <%= form_with(model: [@question, @comment], local: true) do |f| %>
+      <%= f.text_area :content %>
+      <%= button_tag type: "submit" do %>
+        <i class="far fa-comments"></i> コメントする
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<%= link_to "質問一覧に戻る", questions_path %>
+
+<% if user_signed_in? && current_user.id == @question.user.id %>
+  <%= button_to "削除する", question_path(@question.id), method: :delete %>  
+  <%= link_to "編集する", edit_question_path(@question.id) %>
+<% end %>
+
+ 

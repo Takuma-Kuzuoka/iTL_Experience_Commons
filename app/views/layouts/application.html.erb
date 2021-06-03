@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ITL Experience Commons</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <header>
+
+<div class="menu">
+ <h1><%= link_to "iTL Experience commons", root_path %></h1>
+ <div class="menu-list">
+ <ul>           
+ <% if user_signed_in? %>
+ <li><%= link_to "マイページ", user_path(current_user.id) %></li>
+ <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+ <div class="overlay" id="js-overlay"></div>
+    <div class="hamburger" id="js-hamburger">
+      <span class="hamburger__lineTop"></span>
+      <span class="hamburger__lineCenter"></span>
+      <span class="hamburger__lineBottom"></span>
+    </div>
+ <% else %>
+ <li><%= link_to "ログイン", questions_path %></li>
+ <li><%= link_to "新規登録", new_user_registration_path %></li>
+ <div class="overlay" id="js-overlay"></div>
+    <div class="hamburger" id="js-hamburger">
+      <span class="hamburger__lineTop"></span>
+      <span class="hamburger__lineCenter"></span>
+      <span class="hamburger__lineBottom"></span>
+    </div>
+ <% end %>
+ </ul>
+ </div>
+</div>
+
+<div class="sideMenu">
+  <nav>
+    <ul>
+        <% if user_signed_in? %>
+        <li><%= link_to "質問一覧", questions_path %></li>
+        <li><%= link_to "ユーザー一覧", users_path %></li> 
+        <li><%= link_to "マイページ", user_path(current_user.id) %></li>
+        <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+        <li><%= link_to "ログイン", questions_path %></li>
+        <li><%= link_to "新規登録", new_user_registration_path %></li>
+　　　　 <% end %>
+    </ul>
+  </nav>
+</div>
+
+  </header>
+  <main>
+    <%= yield %>
+  </main>
+
+  <footer>
+  <p>Copyright © Kuzuoka Takuma All Rights Reserved.</p>
+ </footer>
+
+<script>
+  function toggleNav() {
+    const body = document.body;
+    const hamburger = document.getElementById("js-hamburger");
+    const overlay = document.getElementById("js-overlay");
+    hamburger.addEventListener("click", function () {
+      body.classList.toggle("nav-open");
+    });
+    overlay.addEventListener("click", function () {
+      body.classList.remove("nav-open");
+    });
+  }
+  toggleNav();
+</script>
+
+  </body>
+  </html>
+  

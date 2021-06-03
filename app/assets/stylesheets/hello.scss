@@ -1,0 +1,87 @@
+// Place all the styles related to the hello controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+//ここからは最初の画像と説明
+.explain {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .text {
+    text-align: center;
+    font-size: 22px;
+    padding: 10px;
+    width: 40%;
+  }
+
+  span {
+      font-weight: bold;
+      font-size: 25px;
+}
+
+//ここからは質問一覧とユーザー一覧についての説明
+//conteinerでは画像＋文章の二セットをもつ
+.conteiner{
+    display: flex;
+    flex-direction: column;
+}
+
+//セットの中身
+.content{
+    display: flex;
+    justify-content: space-between;
+}
+
+.content-image{
+    background-color: white;
+}
+.content-image img{
+    cursor: pointer;
+    transition-duration: 0.5s;
+    border: 1px solid #ddd;
+}
+
+.content-image img:hover{
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+  transform: translateY(-10px);
+  transition-duration: 0.5s;
+}
+
+
+.content-text{
+    font-family: serif;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+    width: 40%;
+}
+
+//質問一覧とかそういうタイトル
+.content-name{
+    font-size: 23px;
+    font-weight: bold;
+}
+
+
+.content-name a { 
+	color: black;
+	transition: color 0.5s;
+	text-decoration: none;
+}
+
+.content-name a:visited { color:black; text-decoration:none}
+
+.content-name a:hover { color:darkred}
+.content-name a:active{color : red;}
+
+
+.message{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+

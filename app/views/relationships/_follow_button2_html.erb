@@ -1,0 +1,29 @@
+<form method="delete" name="form_1" id="form_1" action="relationships/<%=t.id%>">
+    <input type="hidden" name="user_name" placeholder="ユーザー名">
+    <a href="javascript:form_1.submit()">リンク名</a>
+</form>
+
+
+
+<% unless current_user == user %>
+  <% if current_user.following?(user) %>
+    <%= form_for(current_user.relationships.find_by(follow_id: user.id), html: { method: :delete }) do |f| %>
+      <%= hidden_field_tag :follow_id, user.id %>
+      <div class="button-panel2">
+      <%= button_tag type: 'submit', class: "button2" do %>
+        <i class="fas fa-user-minus"></i>
+      <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <%= form_for(current_user.relationships.build) do |f| %>
+      <%= hidden_field_tag :follow_id, user.id %>
+      <div class="button-panel3">
+        <%= button_tag type: 'submit', class: "button3" do %>
+        
+          <i class="fas fa-user-plus"></i>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

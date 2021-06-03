@@ -1,0 +1,95 @@
+<br>
+<br>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+<div class="questions-index">
+<div class="left">
+  <div class="left-search">
+  <span class="box-title">質問を検索</span>
+   <%= form_tag({controller:"questions",action:"index"}, method: :get) do %>
+     <%= text_field_tag :search, '', class: "search-box", placeholder: "Search..." %>
+     <label for="search-box"><span class ="search-icon"><i class="fa fa-search fa-fw"></i></span></label>
+     <%= submit_tag '検索する' , id:"search-submit"  %>
+   <% end %>
+
+   <script>
+     document.addEventListener("touchstart", function(){}, true);
+   </script>
+   <br>
+   <p>質問のタイトル、内容で検索ができます。<br>
+   また、質問者の研究室や、希望の進路から検索ができ、<br>
+   自分と似た質問者の質問などを調べることもできます。</p>
+   
+  </div>
+  <div class="create-question">
+     <span class="box-title">質問を投稿</span>
+
+     <div class="container">
+     <%= link_to "質問投稿へ", new_question_path, {class: "btn-box"} %>
+     </div>
+
+     <br>
+     <br>
+     <p>あなたの知りたいことを直接してみよう。<br>
+     同じ悩みを持った人や、悩みを解決してきた人たちが、<br>
+     答えてくれます。</p>
+  </div>
+</div>
+<!-ページネーション->
+<div class="right">
+
+  <div class="bootstrap"><%= paginate @questions %></div>
+   <% @questions.each do |t| %>
+      <div class="questions-card">
+        <%= link_to question_path(t.id) do %>
+          <div class="questions-container">
+            <div class="question">
+             <!--ユーザーの名前とトプ画ここから-->
+              <div class="questioner">
+                  <div class="questioner-image">
+                     <% if t.user.image? %>  
+                     <%= image_tag t.user.image_url, size: "30x30" %>
+                     <% else %>  
+                     <%= image_tag  'default.png', size: "30x30" %>
+                    <% end %>
+                  </div>
+                  <div class="questioner-name">
+                    <object><a href="/users/<%= t.user.id %>"><%= t.user.name %></a></object>
+                  </div>
+               </div>
+                     <!--ユーザーの名前とトプ画ここまで-->
+                  <div class="question-title">
+                    <%= t.title.truncate(40) %>
+                  </div>
+                  <div class="count">
+                    <div class="comment-count">
+                      コメント<%= t.comments.count %>件
+                    </div>
+                    &nbsp;
+                    <div class="liked-count">
+                      いいね<%= t.comments.count %>件
+                    </div>
+                    &nbsp;
+                    <div class="questions-time">
+                      <%= t.created_at.to_s(:datetime_jp) %>
+                    </div>
+                  </div>
+             </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  
+  <% if @questions.count ==4 %>
+   <div class="bootstrap"><%= paginate @questions %></div>
+  <% end %> 
+</div>
+
+
+</div>
+
+
+
+
+

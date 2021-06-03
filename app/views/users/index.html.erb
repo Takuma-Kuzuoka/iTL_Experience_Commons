@@ -1,0 +1,92 @@
+<br>
+<br>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+<div class="users-index">
+<div class="user-left">
+  <div class="user-left-search">
+  <span class="user-box-title">ユーザーを検索</span>
+   <%= form_tag({controller:"users",action:"index"}, method: :get) do %>
+     <%= text_field_tag :search, '', class: "search-box", placeholder: "Search..." %>
+     <label for="search-box"><span class ="search-icon"><i class="fa fa-search fa-fw"></i></span></label>
+     <%= submit_tag '検索する' , id:"search-submit"  %>
+   <% end %>
+
+   <script>
+     document.addEventListener("touchstart", function(){}, true);
+   </script>
+   <br>
+   <p>iTL Experience commonsを利用している人の<br>
+   検索ができます。また、ユーザーの研究室や<br>
+   希望の進路から検索ができ、自分と似た質問者<br>
+   などを調べることができます。</p>
+   
+  </div>
+
+</div>
+<!-ページネーション->
+<div class="user-right">
+
+  <div class="bootstrap"><%= paginate @users %></div>
+   <% @users.each do |t| %>
+      <div class="users-card">
+        <%= link_to user_path(t.id) do %>
+          <div class="users-container">
+            <div class="user-question">
+             <!--ユーザーの名前とトプ画ここから-->
+              <div class="user-questioner">
+                  <div class="user-questioner-image">
+                     <% if t.image? %>  
+                     <%= image_tag t.image_url, size: "30x30" %>
+                     <% else %>  
+                     <%= image_tag  'default.png', size: "30x30" %>
+                    <% end %>
+                  </div>
+                  <div class="user-questioner-name">
+                    <object><a href="/users/<%= t.id %>"><%= t.name %></a></object>
+                  </div>
+                  
+                  
+                  <div class="user-follow">
+                  <%= render "relationships/follow_button", user: t  %>
+                  </div> 
+                  
+                
+               </div>
+                     <!--ユーザーの名前とトプ画ここまで-->
+                  <div class="user-question-title">
+                   <div id="smaller">
+                    <%= t.labo %>
+                    <%= t.course %><br>
+                   </div> 
+                    <% if t.profile %>
+                    <%= t.profile.truncate(40)%>
+                    <% end %>
+                  </div>
+                  <div class="user-count">
+                    <div class="user-comment-count">
+                      フォロー<%= t.followings.count %>人<br>
+                    </div>
+                    &nbsp;
+                    <div class="liked-count">
+                      フォロワー<%= t.followers.count %>人
+                    </div>
+                  </div>
+             </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  
+  <% if @users.count ==4 %>
+   <div class="bootstrap"><%= paginate @users %></div>
+  <% end %> 
+</div>
+
+
+</div>
+
+
+
+

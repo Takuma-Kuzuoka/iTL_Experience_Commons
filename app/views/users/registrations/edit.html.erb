@@ -1,0 +1,69 @@
+<div class="new-body">
+<div class="form-wrapper">
+<h2>編集する</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "users/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+  </div>
+
+<!--アカウント編集時にプロフィールを入力できるようにフォームを追加-->
+  <div class="field">
+    <%= f.label :profile, "プロフィール" %><br />
+    <%= f.text_area :profile, autofocus: true %>
+  </div>
+
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :password, "パスワード変更" %> <i>(変更したい場合)</i><br />
+    <%= f.password_field :password, autocomplete: "new-password", placeholder: "半角英数6文字以上" %>
+　 </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation, "パスワード変更(確認)" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "再度ご入力ください" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :current_password %> <i>(変更にはパスワードが必要です)</i><br />
+    <%= f.password_field :current_password, autocomplete: "current-password" , placeholder: "必須項目です"%>
+  </div>
+
+  <div class="selectbox">
+  　<%= f.label :course, "希望の進路" %>
+  　<%= f.select :course, [["IT系", "IT系"], ["法律系", "法律系"],["外資・海外","外資・海外"]], include_blank: "選択して下さい" %>
+  　<%= f.label :labo, "ゼミ" %>
+  　<%= f.select :labo, [["岡嶋ゼミ", "岡嶋ゼミ"], ["飯尾ゼミ", "飯尾ゼミ"],["須藤ゼミ","須藤ゼミ"],["未所属","未所属"]], include_blank: "選択して下さい" %>
+　</div>
+
+
+  <div class="image_input_btn">
+    <%= f.label :image, "プロフィール画像" %>
+    <br>
+    <%= f.file_field :image %>
+  </div>
+
+      
+  <div class="button-panel">
+    <%= f.submit "更新する" , class:"button"%>
+  </div>
+
+
+<% end %>
+
+
+<div class="button-panel">
+  <%= button_to "退会する", registration_path(resource_name), data: { confirm: "本当に退会しますか？" }, method: :delete, class: "button" %></p>
+</div>
+
+
+</div>
+</div>
+

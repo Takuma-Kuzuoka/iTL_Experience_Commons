@@ -1,0 +1,17 @@
+<h1>iTL Experience commons</h1>
+<h3>新規質問</h3>
+<%= form_for @question do |f| %>
+　
+　<div class="field">
+    <%= f.label:title  %>
+    <%= f.text_field :title, :size => 52 %>
+
+  <div class="field">
+    <%= f.label :content %>
+    <%= f.text_area :content, :size => "50x10"  %>
+  </div>
+  <%= f.submit "質問する" %>
+  </div>
+
+<% end %>
+<%= link_to "質問一覧にもどる", questions_path %>
