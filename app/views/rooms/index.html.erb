@@ -1,16 +1,44 @@
-<p>DM一覧</p>
+<div class ="rooms-index">
 <% if current_user.id == @user.id %>
-  <h3>チャット一覧</h3>
+  <h3 class ="room-title">DM一覧</h3>
   <% @rooms.each do |r| %>
     <% r.users.each do |u| %> <!--ルームのユーザーは二人-->
      <% if u.id == current_user.id %> <!--自分じゃない方は表示-->
      <% else %>
-        <p><a href="/rooms/<%= r.id %>"><%= u.name %>さんとのチャット</a></p>
+     
+      <div class="rooms-card">
+        <%= link_to room_path(r.id) do %>
+          <div class="rooms-container">
+            <div class="room">
+             <!--ユーザーの名前とトプ画ここから-->
+              <div class="talker">
+                  <div class="talker-image">
+                     <% if u.image? %>  
+                     <%= image_tag u.image_url, size: "30x30" %>
+                     <% else %>  
+                     <%= image_tag  'default.png', size: "30x30" %>
+                    <% end %>
+                  </div>
+                  <div class="talker-name">
+                    <object><a href="/users/<%= u.id %>"><%= u.name %></a></object>
+                  </div>
+               </div>
+                     <!--ユーザーの名前とトプ画ここまで-->
+                  <div class="last-talk">
+                    <div class="last-talk-content"><%= Message.find_by(id: r.message_ids.last).content.truncate(30) %></div>
+                    <div class="last-talk-content"><%= Message.find_by(id: r.message_ids.last).created_at.to_s(:datetime_jp) %></div>
+                  </div>
+             </div>
+          </div>
+        <% end %>
+      </div>
      <% end %>
     <% end %> 
-  <% end %>
+    <% end %>
 <% else %>
-
 <% end %>
+</div>
+
+
 
 

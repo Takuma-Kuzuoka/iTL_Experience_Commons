@@ -263,7 +263,7 @@ $tl: 0.6s; // transition length
   border-top: solid 5px darkred;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
 
   width: 70%;
   word-wrap:break-word;
@@ -280,7 +280,9 @@ $tl: 0.6s; // transition length
 }
 
 .pquestioner-name{
-  padding-left: 750px;
+  width: 20%
+  ;
+  
 }
 
 #question-show-content{
@@ -299,9 +301,218 @@ $tl: 0.6s; // transition length
 .pcontent{
   width: 100%;
 }
+
+.question-show-bottom{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+
+.question-show-like {
+  width: 40px;
+}
+
+
+
+.question-edit-and-delete{
+  margin-right: 30px;
+}
+
 .ptime{
   position:relative;
   right: 10px;
   bottom: 0;
-  margin-left: 650px;
+}
+
+.comment-wrapper{
+  text-align: center;
+  padding: 0.5em 1em;
+  margin: 30px auto;
+  color: #5d627b;
+  background: white;
+  border-top: solid 5px darkred;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+  width: 70%;
+  word-wrap:break-word; 
+}
+
+.comment-upper{
+  font-size: larger;
+  padding-bottom: 20px;
+  border-bottom: dotted 1px darkred;
+}
+
+//ここからコメント
+/* 吹き出し本体 */
+.balloon{
+  position: relative;
+  padding: 20px;
+  background-color: #EEEEEE;
+  
+  color: #5d627b;
+  border-radius: 10px;
+  width: 60%;
+  margin: auto;
+}
+/* 色付きの半円 */
+.balloon::before{
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  transform: rotate(45deg);
+  left: 20px;
+  top: -15px;
+  border-left: 20px solid #EEEEEE;
+  border-top: 20px solid #EEEEEE;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+}
+/* 白い半円 */
+.balloon::after{
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  transform: rotate(45deg);
+  left: 35px;
+  top: -20px;
+  border-left: 20px solid #ffffff;
+  border-top: 20px solid #ffffff;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+}
+
+
+.comment-delete{
+  float: right;
+}
+
+.comment-delete a{
+  color: #990101;
+  transition: color 0.5s;
+  text-decoration: none; 
+}
+
+.comment-user-and-time{
+  display: flex;
+  justify-content: space-around;
+}
+
+.comment-content{
+  border-bottom: dotted #990101;
+  padding-bottom: 20px;
+}
+
+.comment-user{
+  display: flex;
+}
+
+.comment-user-name a{
+  color:#5d627b;
+  transition: color 0.5s;
+  text-decoration: none; 
+}
+
+.comment-user-name a:hover{
+  color: #990101;
+}
+
+.comment-user-name a:active{
+  color: red
+}
+
+
+
+
+.question-show-bottom a{
+  color:#5d627b;
+  transition: color 0.5s;
+  text-decoration: none; 
+}
+
+.question-show-bottom a:hover{
+  color: #990101;
+}
+
+.question-show-bottom a:active{
+  color: red
+}
+
+.question-show-like a {
+  color: #990101;
+}
+
+
+
+//ここから質問作成ページ
+.question-new-title{
+  padding: 2em 1em;
+  margin: 30px auto;
+  color: #5d627b;
+  background: white;
+  border-top: solid 5px darkred;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+  display: flex;
+  justify-content: center;
+  width: 70%;
+  word-wrap:break-word;
+}
+
+.title-label{
+  font-size: larger;
+  font-weight: bold;
+}
+
+.title-field{
+  width: 70%;
+}
+
+.question-new-content{
+  padding: 0.5em 1em;
+  margin: auto;
+  color: #5d627b;
+  background: white;
+  border-top: solid 5px darkred;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  word-wrap:break-word;
+}
+
+.content-label{
+  font-size: larger;
+  font-weight: bold;
+  text-align: center;
+}
+
+.submit_class_newquestion{
+  display       : inline-block;
+  border-radius : 50%;          /* 角丸       */
+  font-size     : 18pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 12px 12px;   /* 余白       */
+  background    : rgba(153, 0, 0, 0.96);     /* 背景色     */
+  color         : #dddddd;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 9px 9px 11px #666666;  /* 影の設定 */
+  border        : 2px solid rgba(153, 0, 0, 0.96);    /* 枠の指定 */
+  width: 20%;
+  margin: 30px auto;
+  
+}
+
+.submit_class_newquestion:hover{
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : rgba(153, 0, 0, 0.96);     /* 背景色     */
+  background    : #dddddd;     /* 文字色     */
+  
 }

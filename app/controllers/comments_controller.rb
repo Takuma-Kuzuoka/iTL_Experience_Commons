@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
 
     def create
       question = Question.find(params[:question_id])
-      comment = question.comments.build(comment_params) #buildを使い、contentとtweet_idの二つを同時に代入
+      comment = question.comments.build(comment_params) #buildを使い、contentとquestion_idの二つを同時に代入
       comment.user_id = current_user.id
       if comment.save
         flash[:success] = "コメントしました"
@@ -12,6 +12,13 @@ class CommentsController < ApplicationController
         flash[:success] = "コメントできませんでした"
         redirect_back(fallback_location: root_path)
       end
+    end
+
+    def destroy
+      
+      comment = Comment.find(params[:id])
+      comment.destroy
+      redirect_back(fallback_location: root_path)
     end
   
     private

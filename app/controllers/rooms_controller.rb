@@ -21,6 +21,6 @@ class RoomsController < ApplicationController
   def index
     @user = User.find(current_user.id) #userはログインしている人
     @rooms = @user.rooms #ログインしている人のルーム一覧
-    
+
   end
 end

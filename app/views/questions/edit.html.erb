@@ -1,13 +1,19 @@
-<%= form_for @question  do |f| %>
+
+<%= form_for @question do |f| %>
 　
-    <div class="field">
-        <%= f.label:title  %>
-        <%= f.text_field :title, :size => 52 %>
+    　<div class="question-new-title">
+        <%= f.label:title, "質問のタイトル：", {class: 'title-label'}  %>
+        <%= f.text_field :title, :size => 100, :class => 'title-field'%>
+      </div>
+    
+      <div class="question-new-content">
+        <%= f.label :content, "質問の内容", {class: 'content-label'} %>
+        <%= f.text_area :content, :size => "50x15", :class => 'content-field'  %>
         
-        <div class="field">
-        <%= f.label :content %>
-        <%= f.text_area :content, :size => "50x10"  %>
-        </div>
-        <%= f.submit "質問する" %>
-     </div>     
-<% end %>
+        <%= f.submit "質問する" , :class => 'submit_class_newquestion' %>
+      </div>
+    
+      
+    
+ <% end %>
+    

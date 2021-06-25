@@ -14,6 +14,8 @@ Rails.application.routes.draw do
       resources :likes, only: [:create, :destroy]
     end
 
+    resources :comments, only: [:destroy]
+
     resources :users, only: [:show, :index]
     get 'rooms/index' => 'rooms#index'
     resources :rooms, :only => [:create, :show]

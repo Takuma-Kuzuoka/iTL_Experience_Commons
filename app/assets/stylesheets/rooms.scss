@@ -1,3 +1,154 @@
-// Place all the styles related to the rooms controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.rooms-card{
+    width: 60%;
+    margin: auto;
+  }
+
+  .room-title{
+      text-align: center;
+  }
+  
+  
+  
+  .rooms-card a{
+    text-decoration: none;
+    color: #5d627b;
+    cursor: pointer;
+    transition-duration: 0.5s;
+  }
+  
+  .rooms-container {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #5d627b;
+    background: white;
+    border-top: solid 5px #1F2125;
+    border-bottom:solid 2px darkred;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.22);
+  }
+  
+  
+  
+  .rooms-index .rooms-card:hover{
+    box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+    transform: translateY(-10px);
+    transition-duration: 0.5s;
+  }
+
+  .talker {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  
+  .talker-name object a{ 
+    color:#5d627b;
+    transition: color 0.5s;
+  }
+  
+  .talker-name object a:hover{ 
+     color:darkred
+  }
+  
+  .talker-name object a:active{ 
+    color:red
+  }
+  
+  .rooms-index p {
+    color: #888;
+  }
+
+  .last-talk {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+  }
+
+
+
+ /*吹き出し*/
+.balloon_l,
+.balloon_r{
+  margin: 30px 0;
+  display:flex;
+  justify-content: flex-start;
+  align-items: flex-start; /*縦位置を上揃え*/
+/*   align-items: center; */ /*縦位置を真ん中揃え*/
+}
+.balloon_r{
+  justify-content:flex-end;
+}
+.faceicon img{
+  width: 100px; /*任意のサイズ*/
+  height: auto;
+}
+.balloon_r .faceicon{
+  margin-left:25px;
+}
+.balloon_l .faceicon{
+  margin-right:25px;
+}
+.balloon_r .faceicon{
+  order:2 !important;
+}
+.says {
+  max-width:700px; /*最大幅は任意*/
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  padding: 17px 18px 15px 18px;
+  border-radius: 12px;
+  background: #550000	;/*色は任意*/
+  box-sizing:border-box;
+  margin:0 !important;
+  line-height:1.5;
+  flex-direction: column;
+/*   align-items: center; */
+}
+
+.says p:first-child{
+  margin-top:0 !important;
+}
+.says:after {
+  content: "";
+  position: absolute;
+  border: 10px solid transparent;
+/*   margin-top:-3px;  */
+}
+.balloon_l .says:after {
+  left: -26px;
+  border-right: 22px solid #550000	;
+}
+.balloon_r .says:after {
+  right: -26px;
+  border-left: 22px solid #550000	;
+}
+ 
+
+.message-time{
+ float: right;
+}
+
+.others{
+  text-align: center;
+  padding-top: 30px;
+  margin-bottom: 20px;
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.message-time {
+  color: #EEEEEE;
+}
+
+.message-content{
+  color:#EEEEEE;
+}
+
+.talkbody{
+  background-color: #EEEEEE;
+}
+
+.messageForm{
+  text-align: center;
+}

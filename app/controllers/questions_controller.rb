@@ -3,12 +3,12 @@ class QuestionsController < ApplicationController
     def index
 
         if params[:search] == nil
-          @questions = Question.all.page(params[:page]).per(4)
+          @questions = Question.all.order(created_at: :desc).page(params[:page]).per(4)
         elsif params[:search] == ''
-          @questions = Question.all.page(params[:page]).per(4)
+          @questions = Question.all.order(created_at: :desc).page(params[:page]).per(4)
         else
           #部分検索
-          @questions = Question.where("content LIKE ? ",'%' + params[:search] + '%').page(params[:page]).per(4)
+          @questions = Question.where("content LIKE ? ",'%' + params[:search] + '%').order(created_at: :desc).page(params[:page]).per(4)
         end
     end
    
