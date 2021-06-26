@@ -25,8 +25,10 @@
                </div>
                      <!--ユーザーの名前とトプ画ここまで-->
                   <div class="last-talk">
+                  <% if Message.find_by(id: r.message_ids.last) %> 
                     <div class="last-talk-content"><%= Message.find_by(id: r.message_ids.last).content.truncate(30) %></div>
                     <div class="last-talk-content"><%= Message.find_by(id: r.message_ids.last).created_at.to_s(:datetime_jp) %></div>
+                  <% end %>  
                   </div>
              </div>
           </div>

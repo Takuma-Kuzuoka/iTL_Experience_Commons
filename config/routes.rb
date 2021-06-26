@@ -15,9 +15,8 @@ Rails.application.routes.draw do
     end
 
     resources :comments, only: [:destroy]
-
-    resources :users, only: [:show, :index]
     get 'rooms/index' => 'rooms#index'
+    resources :users, only: [:show, :index]
     resources :rooms, :only => [:create, :show]
     resources :messages, only: [:create]
     resources :relationships, only: [:create, :destroy]
