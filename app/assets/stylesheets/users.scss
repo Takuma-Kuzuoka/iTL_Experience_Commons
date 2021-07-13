@@ -546,6 +546,18 @@ $tl: 0.6s; // transition length
 
 
 
+.privacy a{
+	color: black;
+	transition: color 0.5s;
+}
+
+.privacy a:hover {
+	color: darkred;
+}
+
+.privacy a:active {
+	color: red;
+}
 
 
 
