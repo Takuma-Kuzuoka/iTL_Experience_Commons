@@ -8,7 +8,8 @@ class QuestionsController < ApplicationController
           @questions = Question.all.order(created_at: :desc).page(params[:page]).per(4)
         else
           #部分検索
-          @questions = Question.where("content LIKE ? ",'%' + params[:search] + '%').order(created_at: :desc).page(params[:page]).per(4)
+          search = params[:search]
+          @questions = Question.where("content LIKE ? OR title LIKE ? ","%#{search}%","%#{search}%").order(created_at: :desc).page(params[:page]).per(4)
         end
     end
    
