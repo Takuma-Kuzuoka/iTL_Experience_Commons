@@ -109,7 +109,15 @@ select{
   margin-bottom: 40px;
 }
 
-
+@media (max-width: 599px) {
+  .user_content {
+    display: flex;
+    flex-direction: column;
+  .user_attribute{
+    margin: auto;
+   }
+  }
+ }
 
 .user_image img{
   width: 250px;
@@ -231,15 +239,7 @@ select{
 	padding: 0.5em 1em;
 	border-top: 1px solid #cccccc;
 }
-@media (max-width: 480px) {
-	.cp_tab {
-		width: 100%;
-		font-size: 0.8em;
-	}
-	.cp_tab label {
-		padding: 0.5em;
-	}
-}
+
 
 .show-list a{
   color: #AAAAAA;
@@ -255,6 +255,7 @@ select{
 }
 
 .user_attribute table td{
+  width: 50%;
   border-width:0.5px;
   border-bottom-style:solid;
   border-color: darkred;
@@ -352,6 +353,7 @@ box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
 word-wrap:break-word;
 }
 
+
 //ここまで
 
 
@@ -374,6 +376,20 @@ word-wrap:break-word;
   width: 70%;
   margin: auto;
 }
+
+
+@media (max-width: 599px) {
+  .tab01-profile{
+    width: 95%;
+  }
+
+  .user-questions-card{
+    width: 95%;
+  }
+  .user_show .users-card{
+    width: 95%;
+  }
+ }
 //ここまで
 
 

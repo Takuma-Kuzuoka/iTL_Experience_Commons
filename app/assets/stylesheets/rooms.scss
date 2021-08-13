@@ -3,6 +3,12 @@
     margin: auto;
   }
 
+  @media (max-width: 599px) {
+   .rooms-card{
+    width: 90%;
+  }
+}
+
   .room-title{
       text-align: center;
   }
@@ -59,11 +65,14 @@
 
   .last-talk {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     
   }
-
+ 
+  .last-talk-time {
+    text-align: right;
+  }
 
 
  /*吹き出し*/

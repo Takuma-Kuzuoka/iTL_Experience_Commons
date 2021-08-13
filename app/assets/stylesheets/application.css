@@ -64,11 +64,16 @@ ul li {
 	align-items: center;
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 599px) {
     .menu-list li{
       display: none;
     }
+	.menu h1{
+		font-size: small;
+	}
    }
+
+ 
 
   .menu ul {
 	display: flex;

@@ -21,7 +21,7 @@
     width: 40%;
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 599px) {
     .text {
       display: none;
     }
@@ -56,6 +56,13 @@
     border: 1px solid #ddd;
 }
 
+@media (max-width: 599px) {
+    .content-image {
+      width: 50%;
+    }
+   }
+
+
 .content-image img:hover{
   box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
   transform: translateY(-10px);
@@ -71,7 +78,7 @@
     width: 50%;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 599px) {
     .content-text .message .ppc {
       display: none;
     }
@@ -107,7 +114,7 @@
     display: none;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 599px) {
     .message .psmafo {
       display: block;
     }
