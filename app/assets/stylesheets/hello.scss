@@ -2,23 +2,28 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 //ここからは最初の画像と説明
+.hello-index{
+    margin: 0 0 0 0;
+}
 .explain {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
   }
-
+.explain img{
+    width: 100%;
+}
   .text {
     text-align: center;
-    font-size: 22px;
-    padding: 10px;
+    font-size: 1.3rem;
+    padding: 2%;
     width: 40%;
   }
 
   span {
       font-weight: bold;
-      font-size: 25px;
+      font-size: 1.5rem;
 }
 
 //ここからは質問一覧とユーザー一覧についての説明
@@ -38,6 +43,7 @@
     background-color: white;
 }
 .content-image img{
+    width: 100%;
     cursor: pointer;
     transition-duration: 0.5s;
     border: 1px solid #ddd;
@@ -53,9 +59,9 @@
 .content-text{
     font-family: serif;
     text-align: center;
-    font-size: 18px;
-    padding: 10px;
-    width: 40%;
+    font-size: 1.15em;
+    padding: 1%;
+    width: 50%;
 }
 
 //質問一覧とかそういうタイトル
