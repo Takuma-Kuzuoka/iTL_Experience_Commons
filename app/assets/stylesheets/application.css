@@ -14,11 +14,6 @@
  *= require_self
  */
 
- @media screen and (max-width:767px){
-  .menu-list{
-	  display: none;
-  }
- }
 
  p {
 	white-space: pre-wrap;
@@ -47,6 +42,7 @@ ul li {
 
 /*ここからはメニューバー*/
 
+
 .menu {
 	background-color: white;
 	height: 50%;
@@ -67,6 +63,13 @@ ul li {
 	display: flex;
 	align-items: center;
   }
+
+  @media (max-width: 500px) {
+    .menu-list li{
+      display: none;
+    }
+   }
+
   .menu ul {
 	display: flex;
 	padding-right: 3em;
@@ -172,10 +175,10 @@ footer {
 	overflow-y: auto;
 	padding-top: 5em;
 	position: fixed;
-	right: -18%;
+	right: -200px;
 	transition: all 0.6s;
 	top: 0;
-	width: 18%;
+	width: 200px;
 	z-index: 200;
   }
 
