@@ -31,8 +31,7 @@
      <%= link_to "質問投稿へ", new_question_path, {class: "btn-box"} %>
      </div>
 
-     
-     <p>
+     <p class="ppc">
      あなたの知りたいことを直接してみよう。
      同じ悩みを持った人や、悩みを解決してきた人たちが、
      答えてくれます。
@@ -75,6 +74,7 @@
                       いいね<%= t.likes.count %>件
                     </div>
                     &nbsp;
+                    <br>
                     <div class="questions-time">
                       <%= t.created_at.to_s(:datetime_jp) %>
                     </div>

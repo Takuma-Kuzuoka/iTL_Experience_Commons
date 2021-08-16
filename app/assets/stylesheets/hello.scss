@@ -78,11 +78,20 @@
     width: 50%;
 }
 
+.content-text .message .psmafo{
+  display: none;
+}
+
 @media (max-width: 599px) {
     .content-text .message .ppc {
       display: none;
     }
+    .content-text .message .psmafo {
+      display: block;
+    }
    }
+
+
 
 //質問一覧とかそういうタイトル
 .content-name{
@@ -110,15 +119,9 @@
     align-items: center;
 }
 
-.message .psmafo{
-    display: none;
-}
 
-@media (max-width: 599px) {
-    .message .psmafo {
-      display: block;
-    }
-   }
+
+
 
 
 
