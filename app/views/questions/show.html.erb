@@ -75,7 +75,7 @@
    
   <% if user_signed_in? %>
     <%= form_with(model: [@question, @comment], local: true) do |f| %>
-      <%= f.text_area :content, size: "40x5" %><br>
+      <%= f.text_area :content, class:'text_area' %><br>
       <%= button_tag type: "submit" , class: "btn-box" do %>
         <i class="far fa-comments"></i> コメントする
       <% end %>

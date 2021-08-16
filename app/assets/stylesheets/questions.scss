@@ -32,10 +32,23 @@ $tl: 0.6s; // transition length
   .pcontent{
     font-size: small;
   }
+  .user-left-search p{
+    font-size: smaller !important;
+  }
 
+  .title-label{
+    width: 80%;
+  }
 
-
+  .submit_class_newquestion{
+    width: 100% !important;
+    
+  }
+  .comment-wrapper .btn-box{
+    width: 100% !important;
+  }
 }
+
 
 .questions-index{
   display: flex;
