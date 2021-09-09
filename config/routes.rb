@@ -13,6 +13,11 @@ Rails.application.routes.draw do
       resources :comments, only: [:create]
       resources :likes, only: [:create, :destroy]
     end
+
+    #Advertisementsのルーティング
+    get 'advertisements/index' => 'advertisements#index'
+    get 'advertisements/new' => 'advertisements#new'
+
     get 'hello/privacy' => 'hello#privacy'
     resources :comments, only: [:destroy]
     get 'rooms/index' => 'rooms#index'
